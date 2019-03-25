@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hibernate-mapping>
+
+<class name="ToDoListJDBC.ToDos" table="todo_list">
+<id name="toDoId" column="ID" type="int" >
+	<generator class = "native"/>
+	</id>
+<property name="createdDate" column="created_date" type="LocalDate" />
+<property name="toDoTitle" column="todo_title" type="string" />
+<property name="toDoDes" column="todo_des" type="string" length = "255" />
+<property name="toDoDue" column="due_date" type="LocalDate" />
+</class>
+
+</hibernate-mapping>
