@@ -18,7 +18,7 @@
 <section>
   <nav>
     <ul>
-     <li><a href="index.jsp">Enter a ToDo</a></li>
+     <li><a href="index.jsp">Enter a ToDo</a></li>     
       <li><a href="ListToDos.jsp">List ToDos</a></li>
       <li><a href="SearchToDos.jsp">Search ToDos</a></li>
       <li><a href="DeleteToDos.jsp">Delete a ToDo</a></li>
@@ -26,7 +26,23 @@
   </nav>
  
   <article>
-    <h2>List of ToDos:</h2>
+    <h2>Enter Search String:</h2>
+    
+    <!-- Form to get ToDo from user -->
+  <form action="SearchToDoServlet" method="GET">
+
+  <div class="row">
+    <div class="col-25">
+      <label for="theSearchString">Search String:</label>
+    </div>
+    <div class="col-75">
+      <input type="text" name="theSearchString"  placeholder="String to search for..."  />
+    </div>
+  </div>
+   <div class="row">
+    <input type="submit" value="Submit"/>
+  </div>
+  </form>
 
 <!--  script below was found on Stack Overflow. It uses error checking to make sure
       the servlet is responding before sending the request for the servlet to build
@@ -37,8 +53,8 @@ function start(){
     try
     {
         asyncRequest = new XMLHttpRequest();
-        asyncRequest.addEventListener("readystatechange", stateChange, false);
-        asyncRequest.open('GET', 'ListToDoServlet', true);    //   /Test is url to Servlet!
+        asyncRequest.addEventListener("submit", stateChange, false);
+        asyncRequest.open('GET', 'SearchToDoServlet', true);    //   /Test is url to Servlet!
         asyncRequest.send(null);
     }
     catch(exception)

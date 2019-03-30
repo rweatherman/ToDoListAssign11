@@ -2,6 +2,10 @@ package ToDoListJDBC;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import javax.servlet.ServletException;
@@ -35,9 +39,7 @@ public class ToDoServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		//out.println("<html><body>");
-		//out.println("<h2>Saving the ToDo to the database...</h2>");
-		//out.println("</body></html>");
+		
 		response.setHeader("Refresh", "0; URL=index.jsp");
 		
 	}
@@ -53,7 +55,8 @@ public class ToDoServlet extends HttpServlet {
 		
 		ToDos theToDo = new ToDos(createDate, request.getParameter("theToDoTitle"), 
 				request.getParameter("theToDoDesc"), dueDate);
-		ToDoList.saveToDos(theToDo);
+		//ToDoList.saveBadToDos("'"+createDate.toString()+"'", "'"+request.getParameter("theToDoTitle")+"'", request.getParameter("theToDoDesc"), "'"+dueDate.toString()+"'");
+
 		
 	doGet(request, response);
 	}

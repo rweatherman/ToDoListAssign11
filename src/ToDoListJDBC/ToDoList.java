@@ -1,11 +1,18 @@
 package ToDoListJDBC;
 
+import java.sql.ResultSet;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.persistence.Query;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.query.NativeQuery;
 
 /**
  * ToDoList class contains methods to interact with the database to create, list
@@ -36,6 +43,24 @@ public class ToDoList {
 			factory.close();
 		}
 	}
+	
+	public static void saveBadToDos(String created_date, String  todo_title, String todo_des, String due_date) {
+		SessionFactory factory = new Configuration().configure("/resources/hibernate.cfg.xml")
+				.addAnnotatedClass(ToDos.class).buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		try {
+			goToDo = session.beginTransaction();
+			NativeQuery insertQuery= session.createSQLQuery("INSERT into todo_list (created_date, todo_title, due_date, todo_des) VALUES(" + created_date + ", " 
+			+ todo_title + ", " +  due_date + ", '" + todo_des + "');");
+			insertQuery.executeUpdate();
+			goToDo.commit();
+			System.out.println("Done!");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		} finally {
+			factory.close();
+		}
+	}
 
 	/** method to query the list of ToDos from the database
 	 * @return list data structure with ToDos
@@ -51,6 +76,40 @@ public class ToDoList {
 			System.out.println(theToDos.toString());
 			return theToDos;
 		} finally {
+			factory.close();
+		}
+	}
+	
+	/** method to query the list of ToDos from the database
+	 * @return list data structure with ToDos
+	 */
+	public static List<ToDos> listSearchToDos(String searchMe) throws Exception {
+		DateTimeFormatter fd =  DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		List<ToDos> theToDos = new ArrayList<ToDos>();
+		SessionFactory factory = new Configuration().configure("/resources/hibernate.cfg.xml")
+				.addAnnotatedClass(ToDos.class).buildSessionFactory();
+		Session session = factory.getCurrentSession();
+		try {
+			session.beginTransaction();
+			//List<ToDos> theToDos = session.createQuery("from ToDos").list();
+			List theResults  = session.createSQLQuery("Select * FROM todo_list WHERE todo_des LIKE '%" + searchMe + "%'").list();
+			session.getTransaction().commit();
+			List<Object[]> rows = theResults;
+			for (Object[] row : rows) {
+				ToDos todoRow = new ToDos();
+				todoRow.setToDoId(Integer.parseInt(row[0].toString()));
+				todoRow.setCreatedDate(LocalDate.parse(row[1].toString(), fd));
+				todoRow.setToDoTitle(row[2].toString());
+				todoRow.setToDoDes(row[3].toString());
+				todoRow.setToDoDue(LocalDate.parse(row[4].toString(), fd));
+				theToDos.add(todoRow);
+			}
+			System.out.println(theToDos.toString());
+			return theToDos;
+		} catch (Exception e) { System.out.println(e);
+		return theToDos;}
+		
+		finally {
 			factory.close();
 		}
 	}
