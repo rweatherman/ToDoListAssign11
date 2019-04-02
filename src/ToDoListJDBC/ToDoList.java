@@ -25,7 +25,7 @@ public class ToDoList {
 	static Session session = null;
 	static Transaction goToDo = null;
 
-	/** method to save the List object to the database
+	/** method to save the List object to the database  
 	 * @param theToDo the object to be added to the database
 	 */
 	public static void saveToDos(ToDos theToDo) {
@@ -43,7 +43,7 @@ public class ToDoList {
 			factory.close();
 		}
 	}
-	
+	/* method for testing injection
 	public static void saveBadToDos(String created_date, String  todo_title, String todo_des, String due_date) {
 		SessionFactory factory = new Configuration().configure("/resources/hibernate.cfg.xml")
 				.addAnnotatedClass(ToDos.class).buildSessionFactory();
@@ -60,7 +60,7 @@ public class ToDoList {
 		} finally {
 			factory.close();
 		}
-	}
+	} */
 
 	/** method to query the list of ToDos from the database
 	 * @return list data structure with ToDos
@@ -92,7 +92,7 @@ public class ToDoList {
 		try {
 			session.beginTransaction();
 			//List<ToDos> theToDos = session.createQuery("from ToDos").list();
-			List theResults  = session.createSQLQuery("Select * FROM todo_list WHERE todo_des LIKE '%" + searchMe + "%'").list();
+			List theResults  = session.createSQLQuery("Select * FROM todo_list WHERE todo_title = '" + searchMe + "'").list();
 			session.getTransaction().commit();
 			List<Object[]> rows = theResults;
 			for (Object[] row : rows) {

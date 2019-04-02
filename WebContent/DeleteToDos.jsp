@@ -20,7 +20,7 @@
     <ul>
       <li><a href="index.jsp">Enter a ToDo</a></li>
       <li><a href="ListToDos.jsp">List ToDos</a></li>
-      <li><a href="SearchToDos.jsp">Search ToDos</a></li>
+     <!--   <li><a href="SearchToDos.jsp">Search ToDos</a></li> -->
       <li><a href="DeleteToDos.jsp">Delete a ToDo</a></li>
     </ul>
   </nav>
