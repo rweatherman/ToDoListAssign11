@@ -6,8 +6,7 @@
       <fileset dir = "${web.dir}/WebContent">
          <include name = "**/*.*"/>
       </fileset>
-      
-     <classes dir = "${web.dir}/build"/> -->
+     <classes dir = "${web.dir}/build"/>
    </war>
    <echo message="Created War File " />
 </target>
