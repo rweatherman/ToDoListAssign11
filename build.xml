@@ -7,7 +7,7 @@
          <include name = "**/*.*"/>
       </fileset>
       
-     <!-- <classes dir = "C:\Program Files (x86)\Jenkins\workspace\ToDoListAnt\build\classes"/> -->
+     <classes dir = "${web.dir}/build"/> -->
    </war>
    <echo message="Created War File " />
 </target>
