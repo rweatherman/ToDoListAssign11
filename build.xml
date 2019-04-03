@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="ToDoList">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.8"/>
+    <property name="source" value="1.8"/>
+    <path id="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath">
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/annotations-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ant.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-ha.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-storeconfig.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina-tribes.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/catalina.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/ecj-4.6.3.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/el-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper-el.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jasper.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jaspic-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/jsp-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/servlet-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-api.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-coyote.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-dbcp.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-es.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-fr.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ja.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-i18n-ru.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jdbc.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-jni.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util-scan.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-util.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/tomcat-websocket.jar"/>
+        <pathelement location="../../../../../../../Program Files/Apache Software Foundation/Tomcat 8.5/lib/websocket-api.jar"/>
+    </path>
+    <path id="Web App Libraries.libraryclasspath"/>
+    <path id="EAR Libraries.libraryclasspath"/>
+    <path id="ToDoList.classpath">
+        <pathelement location="build/classes"/>
+        <path refid="Apache Tomcat v8.5 [Apache Tomcat v8.5].libraryclasspath"/>
+        <path refid="Web App Libraries.libraryclasspath"/>
+        <path refid="EAR Libraries.libraryclasspath"/>
+        <pathelement location="lib/antlr-2.7.7.jar"/>
+        <pathelement location="lib/byte-buddy-1.9.5.jar"/>
+        <pathelement location="lib/classmate-1.3.4.jar"/>
+        <pathelement location="lib/dom4j-2.1.1.jar"/>
+        <pathelement location="lib/FastInfoset-1.2.15.jar"/>
+        <pathelement location="lib/hibernate-commons-annotations-5.1.0.Final.jar"/>
+        <pathelement location="lib/hibernate-core-5.4.1.Final.jar"/>
+        <pathelement location="lib/istack-commons-runtime-3.0.7.jar"/>
+        <pathelement location="lib/jandex-2.0.5.Final.jar"/>
+        <pathelement location="lib/javassist-3.24.0-GA.jar"/>
+        <pathelement location="lib/javax.activation-api-1.2.0.jar"/>
+        <pathelement location="lib/javax.persistence-api-2.2.jar"/>
+        <pathelement location="lib/jaxb-api-2.3.1.jar"/>
+        <pathelement location="lib/jaxb-runtime-2.3.1.jar"/>
+        <pathelement location="lib/jboss-logging-3.3.2.Final.jar"/>
+        <pathelement location="lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar"/>
+        <pathelement location="lib/mysql-connector-java-8.0.15.jar"/>
+        <pathelement location="lib/stax-ex-1.8.jar"/>
+        <pathelement location="lib/txw2-2.3.1.jar"/>
+        <pathelement location="mysql-connector-java-8.0.15.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="build/classes"/>
+        <copy includeemptydirs="false" todir="build/classes">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="build/classes"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="build/classes" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="ToDoList.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target name="ToDoListGUI (1)">
+        <java classname="ToDoListJDBC.ToDoListGUI" failonerror="true" fork="yes">
+            <classpath refid="ToDoList.classpath"/>
+        </java>
+    </target>
+</project>
