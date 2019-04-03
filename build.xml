@@ -6,8 +6,19 @@
               as the first entry and export the buildfile again. -->
 <project basedir="." default="build" name="ToDoList">
     <property environment="env"/>
-	<property name="name" value="ToDoListWar" />
-	<property name="web.dir" value="WebContent" />
+	<property name="project-name" value="${ant.project.name}" />
+		<property name="builder" value="MikeF" />
+
+		<property name="war-file-name" value="${project-name}.war" />
+		<property name="source-directory" value="src" />
+		<property name="classes-directory" value="bin" />
+		<property name="web-directory" value="WebContent" />
+		<property name="web-xml-file" value="WebContent/WEB-INF/web.xml" />
+		<tstamp prefix="build-info">
+			<format property="current-date" pattern="d-MMMM-yyyy" locale="en" />
+			<format property="current-time" pattern="hh:mm:ss a z" locale="en" />
+		</tstamp>
+		<property name="build-directory" value="build" />
     <property name="debuglevel" value="source,lines,vars"/>
     <property name="target" value="1.8"/>
     <property name="source" value="1.8"/>
@@ -77,21 +88,22 @@
     </target>
 	
 
-	   <target name = "deploywar" depends = "build" description = 
-	      "Deploy application as a WAR file">
-	   
-	      <war destfile = "${name}.war" webxml = "${web.dir}/WEB-INF/web.xml">
-	         <fileset dir = "${web.dir}">
-	            <include name = "**/*.*"/>
-	         </fileset>
-	      </war>
-	      
-	      <copy todir = "${deploy.path}" preservelastmodified = "true">
-	         <fileset dir = ".">
-	            <include name = "*.war"/>
-	         </fileset>
-	      </copy>
-	   </target>
+	<target name="war" depends="">
+			<mkdir dir="${build-directory}" />
+			<delete file="${build-directory}/${war-file-name}" />
+			<war warfile="${build-directory}/${war-file-name}" webxml="${web-xml-file}">
+				<classes dir="${classes-directory}" />
+				<fileset dir="${web-directory}">
+					<!-- Need to exclude it since webxml is an attribute of the war tag above -->
+					<exclude name="WEB-INF/web.xml" />
+				</fileset>
+				<manifest>
+					<attribute name="Built-By" value="${builder}" />
+					<attribute name="Built-On" value="${build-info.current-date}" />
+					<attribute name="Built-At" value="${build-info.current-time}" />
+				</manifest>
+			</war>
+		</target>
 	
     <target name="clean">
         <delete dir="build/classes"/>
