@@ -9,6 +9,6 @@
       
       <classes dir = "C:\Program Files (x86)\Jenkins\workspace\ToDoListAnt\build\classes"/>
    </war>
-   <echo message="Created War File" />
+   <echo message="Created War File " />
 </target>
 </project>
