@@ -9,28 +9,4 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
-    <servlet>
-        <servlet-name>ListToDoServelet</servlet-name>
-        <servlet-class>ToDoListJDBC.ListToDoServelet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ListToDoServelet</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
-      <servlet>
-        <servlet-name>DeleteToDoServelet</servlet-name>
-        <servlet-class>ToDoListJDBC.DeleteToDoServelet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>DeleteToDoServelet</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
-      <servlet>
-        <servlet-name>ToDoServelet</servlet-name>
-        <servlet-class>ToDoListJDBC.ToDoServelet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>ToDoServelet</servlet-name>
-        <url-pattern>/*</url-pattern>
-    </servlet-mapping>
 </web-app>
