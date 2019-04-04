@@ -12,10 +12,6 @@
 	<fileset dir = "${web.dir}/WebContent">
           <include name = "**/*.*"/>
       </fileset>
-    <javac destdir = "${build.dir}" >
-            <src path = "${src.dir}"/>
-            <classpath refid = "master-classpath"/>
-         </javac>
      <classes dir = "${build.dir}"/>
    </war>
    <echo message="Created War File " />
