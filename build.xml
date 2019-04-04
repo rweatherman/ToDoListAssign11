@@ -12,10 +12,7 @@
 	<fileset dir = "${web.dir}">
           <include name = "**/*.*"/>
       </fileset>
-  	 <lib dir = "${basedir}/lib">
-  	        
-  	      </lib>
-   
+  	 <lib dir = "${basedir}/lib" />
      <classes dir = "build/classes"/>
    </war>
    <echo message="Created War File " />

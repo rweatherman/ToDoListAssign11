@@ -55,7 +55,7 @@ public class ToDoServlet extends HttpServlet {
 		
 		ToDos theToDo = new ToDos(createDate, request.getParameter("theToDoTitle"), 
 				request.getParameter("theToDoDesc"), dueDate);
-		//ToDoList.saveBadToDos("'"+createDate.toString()+"'", "'"+request.getParameter("theToDoTitle")+"'", request.getParameter("theToDoDesc"), "'"+dueDate.toString()+"'");
+		ToDoList.saveToDos(theToDo);
 
 		
 	doGet(request, response);
