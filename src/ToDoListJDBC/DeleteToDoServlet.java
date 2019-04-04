@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /** @author Michael Forman
  * Servlet implementation class DeleteToDoServlet to list records to be deleted and delete chosen record.
  */
-@WebServlet("/DeleteToDoServlet")
+@WebServlet(value = "/DeleteToDoServlet")
 public class DeleteToDoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

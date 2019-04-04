@@ -1,14 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<project basedir="c:\Users\Michael\Desktop\SoftDev Class\Projects Folder II\Workspace\ToDoList" default="build-war" name="ToDoList">
-<property name="web.dir" value="${basedir}" />
-<property name="source-directory" value="src" />
-<property name="classes-directory" value="${web.dir}/build" />
-<target name = "build-war" >
-   <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/web.xml">
-      <fileset dir = "${web.dir}/WebContent">
+
+<project name = "ToDoList" basedir = "." default = "build" >
+<property name = "src.dir" value = "src" />
+<property name = "web.dir" value = "WebContent" />
+<property name = "build.dir" value = "${web.dir}/WEB-INF/classes" />
+<property name = "source-directory" value = "src" />
+
+<target name = "build" >
+  <!-- <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/web.xml"> -->
+	<war destfile = "ToDoList.war" needxmlfile = "false">  
+	<fileset dir = "${web.dir}/WebContent">
           <include name = "**/*.*"/>
       </fileset>
-     <classes dir = "${classes-directory}"/>
+    <javac destdir = "${build.dir}" >
+            <src path = "${src.dir}"/>
+            <classpath refid = "master-classpath"/>
+         </javac>
+     <classes dir = "${build.dir}"/>
    </war>
    <echo message="Created War File " />
 </target>
