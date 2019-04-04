@@ -9,7 +9,7 @@
 <target name = "build" >
   <war destfile = "ToDoList.war" webxml = "${web.dir}/WEB-INF/web.xml">
 	  
-	<fileset dir = "${basedir}">
+	<fileset dir = "${web.dir}">
           <include name = "**/*.*"/>
       </fileset>
   	 <lib dir = "${basedir}/lib">
