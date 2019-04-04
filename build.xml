@@ -2,11 +2,11 @@
 <project basedir="c:\Users\Michael\Desktop\SoftDev Class\Projects Folder II\Workspace\ToDoList" default="build-war" name="ToDoList">
 <property name="web.dir" value="${basedir}" />
 <target name = "build-war" >
-   <war destfile = "ToDoList.war" needxmlfile="false">
+   <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/lib/web.xml">
       <fileset dir = "${web.dir}/WebContent">
          <include name = "**/*.*"/>
       </fileset>
-     <classes dir = "${web.dir}/build"/>
+     <classes dir = "${build.dir}"/>
    </war>
    <echo message="Created War File " />
 </target>
