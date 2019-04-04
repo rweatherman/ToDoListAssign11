@@ -2,11 +2,11 @@
 <project basedir="c:\Users\Michael\Desktop\SoftDev Class\Projects Folder II\Workspace\ToDoList" default="build-war" name="ToDoList">
 <property name="web.dir" value="${basedir}" />
 <property name="source-directory" value="src" />
-<property name="classes-directory" value="bin" />
+<property name="classes-directory" value="${web.dir}/build" />
 <target name = "build-war" >
    <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/web.xml">
       <fileset dir = "${web.dir}/WebContent">
-         <include name = "**/*.*"/>
+          <include name = "**/*.*"/>
       </fileset>
      <classes dir = "${classes-directory}"/>
    </war>
