@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project basedir="c:\Users\Michael\Desktop\SoftDev Class\Projects Folder II\Workspace\ToDoList" default="build-war" name="ToDoList">
 <property name="web.dir" value="${basedir}" />
+<property name="classes-directory" value="bin" />
 <target name = "build-war" >
    <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/web.xml">
       <fileset dir = "${web.dir}/WebContent">
          <include name = "**/*.*"/>
       </fileset>
-     <classes dir = "${build.dir}"/>
+     <classes dir = "${classes-directory}"/>
    </war>
    <echo message="Created War File " />
 </target>
