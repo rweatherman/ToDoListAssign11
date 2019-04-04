@@ -2,7 +2,7 @@
 <project basedir="c:\Users\Michael\Desktop\SoftDev Class\Projects Folder II\Workspace\ToDoList" default="build-war" name="ToDoList">
 <property name="web.dir" value="${basedir}" />
 <target name = "build-war" >
-   <war destfile = "ToDoList.war" webxml = "${web.dir}/WebContent/WEB-INF/lib/web.xml">
+   <war destfile = "ToDoList.war" webxml = "${web.dir}/WEB-INF/lib/web.xml">
       <fileset dir = "${web.dir}/WebContent">
          <include name = "**/*.*"/>
       </fileset>
