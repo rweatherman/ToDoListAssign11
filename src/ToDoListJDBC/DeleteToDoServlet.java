@@ -24,7 +24,7 @@ public class DeleteToDoServlet extends HttpServlet {
      */
     public DeleteToDoServlet() {
         super();
-        // Not used in this app.
+        // Not used in this app. 
     }
 
 	/**
